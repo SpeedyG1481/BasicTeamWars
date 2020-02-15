@@ -1,0 +1,92 @@
+Team_Make_Cost: 5000 #Team create cost.
+Team_Per_Person_Cost: 100 #So much money is added for each person(size expand).
+Team_Change_Name_Cost: 1500 #Team name change cost.
+Team_Change_Description_Cost: 1500 #Team description change cost.
+Team_Change_Logo_Cost: 1500 #Team logo change cost.
+Team_Change_Short_Name_Cost: 1500 #Team short name cost.
+Team_Take_Claim_Cost: 150000 #Team take claim cost. Cost per claim.
+Team_Take_Claim_Min_Level: 0 #Minimum level need for take claim.
+Max_Team_Power: 1000 #Max Team Power
+Max_Level: 10000 #Max Team Level | (Level = MAX_POWER * LEVEL) #---> if power = MAX_POWER, level up and degrade power to MAX_POWER / 5.
+Max_Team_Size: 100 #Maximum team size.
+
+#Enemy-Neutral team kill-death options
+Enemy_Team_Member_Kill_Point: 25 #How many points add should you kill the enemy team member?
+Enemy_Team_Member_Death_Point: 5 #How many points does it cost to die to the enemy team member?
+Neutral_Team_Member_Kill_Point: 10 #How many points add should you kill the neutral team member?
+Neutral_Team_Member_Death_Point: 2 #How many points does it cost to die to the neutral team member?
+Enemy_Team_Member_Kill_In_Enemy_Claim_Point: 50 #How many points add should you kill the enemy team member in enemy claim?
+Neutral_Team_Member_Kill_In_Enemy_Claim_Point: 20 #How many points add should you kill the neutral team member in neutral claim?
+
+
+#Weekly war system is activated ?
+Weekly_War_Active: false
+#Between war time is time between two team battles.
+Weekly_War_Between_War_Time: 1800 # Seconds 1800 = 30 minute !!!(RECOMMENDED MİN 30 Minute)!!!
+#You can write four value, TEAM_SIZE, TEAM_LEVEL, AUTO, TEAM_WARRIORS.
+Weekly_War_Team_Matching: AUTO
+
+Weekly_War_Options:
+  Death_Drops_Clear: true #Drops clear in war.
+  Minimum_Team_For_Start_War: 3 #If teams joined the war and teams size lower than this value; war won't start.
+  Coundown_Timer: 60 #Seconds before battle sending title... Example: (Last 50 seconds for battle!).
+  Usable_Commands:
+    - '/help'
+  Use_Chat: true
+
+Weekly_War_Player_Options:
+  Killer_Player_Point: 5 #in the war, if anyone team player was killed other team member how many given points ? (5 * (big_team_level - little_team_level))
+  Winner_Team_Point: 250 #winner team how many given points ?
+
+#Siege System is wonderful war option so anyone team pay the siege cost and can surround anyone team claim.
+Siege_System: true
+
+#The lowest level that can be surrounded team.
+Min_Surround_Level: 3
+
+#Claim build prices by levels.
+#Auto build system.
+Prices_Of_Builds:
+  10: 15000 #20x20 claims build cost.
+  15: 25000 #30x30 claims build cost.
+  20: 45000 #40x40 claims build cost.
+  25: 65000 #50x50 claims build cost.
+  30: 75000 #60x60 claims build cost.
+  40: 150000 #80x80 claims build cost.
+
+
+#Claim options
+#This setting must be made the first time. If changes are made later,
+#deterioration occurs in existing lands.
+#Set it up the first time, then do not change until the server or claims is reset.
+
+Max_Takeable_Claims: 110 # Mean of, one team can take a total of 110 claims.
+Max_Expansion_Size: 40 # 80x80 top of claim size.
+Show_New_Claim_Area: true #Recommended true. This option called when players take new claim and claim show with colored border.
+Close_Explosion_In_Claims: true #Recommended true. TNT,Creeper, explosions etc.
+Close_Spread_Fire_In_Claims: true #Recommended true. Close spread fire in claims.
+Close_Piston_Block_Extend_To_Claim: true #Recommended true. Close extending blocks to other teams claims.
+Close_Piston_Block_Retract_To_Claim: true #Recommended true. Close retracing blocks to other teams claims.
+
+Claim_Size_Options:
+  0-5: 10 # 0 to 5 level | 20x20
+  6-10: 15 # 6 to 10 level | 30x30
+  11-20: 20 # 11 to 20 level | 40x40
+  21-50: 25 # 21 to 50 level | 50x50
+  51-100: 30 # 51 to 100 level | 60x60
+  101-#: 40 # (# = MAX_LEVEL) # 101 to MAX_LEVEL | 80x80  | WARNING! Max_Expansion_Size is must be the same this.
+
+Banned_Claim_Worlds:
+  - world_nether
+  - world_the_end
+
+##########
+##########
+##########      #-> Example Claim System.
+##########      #-> C = Center of claim
+####C#####      #-> Claim calculate system, (0-5 Level: 10 Block) = (C + 10 Block & C - 10 Block == 10 - C - 10  => Left side to right side total blocks = 20 Block  )
+##########
+##########
+##########
+##########
+

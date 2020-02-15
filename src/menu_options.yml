@@ -1,0 +1,1299 @@
+#MENU_NAME
+#MENU_NAME: ...
+#MENU_SIZE: ...
+#BUTTONS:
+#NAME: 'USE COLOR CODES AND SET NAME'
+#LORE: 'USE COLOR CODES AND SET LORE'
+#ICON: minecraft-heads.com - Other - Minecraft-URL:
+#LOC: Location of button in menu.
+
+##########################
+#  General Menu Options  #
+##########################
+
+General:
+  Buttons:
+    Close:
+      Icon: 'faff2eb498e5c6a04484f0c9f785b448479ab213df95ec91176a308a12add70'
+      Name: '&cClose Menu'
+      Lore: ["","&eClick and close menu.", ""]
+    Previous:
+      Icon: '28a86bb4fcac3862aad3d51393faa7a1cf3553e4934103ed45ac2a9a888eb9a'
+      Name: '&aPrevious Page'
+      Lore: ["","&eClick to go previous page.", ""]
+    Next:
+      Icon: '28a86bb4fcac3862aad3d51393faa7a1cf3553e4934103ed45ac2a9a888eb9a'
+      Name: '&aNext Page'
+      Lore: ["","&eClick to go next page.", ""]
+    Back:
+      Icon: 'c5a35b5ca15268685c4660535e5883d21a5ec57c55d397234269acb5dc2954f'
+      Name: '&aReturn Previous Menu'
+      Lore: ["","&eClick to return previous menu.", ""]
+
+
+##########################
+# Logo Make Menu Options #
+##########################
+
+LogoMakerMenu:
+  Menu_Name: '&8&nLogo Maker <version>'
+  Buttons:
+    SaveLogo:
+      Icon: '865286e3e6fa00e4a60bb89675b9aa75d6c9cdd1ec840d1bcc296b71c92f9e43'
+      Name: '&eSave This Logo'
+      Lore: ["","&7Click to save logo", "&7and return team make menu.", ""]
+    TopRight:
+      Icon: '3c8870749b145b6fcbe50ea77ad2bf22961ae6ecc425a9a1fd13e3bfb02d54'
+      Name: '&eGo To Top Right'
+      Lore: []
+    TopLeft:
+      Icon: '111f4d8f40399b845f377da9235706f6b447b638319d8e72383b4fdb74a944'
+      Name: '&eGo To Top Left'
+      Lore: []
+    BottomRight:
+      Icon: '4d5e3d6cbd98a094f4c0ec78d34bde1ec8a62fbfe28b78c12f9ba84719f1ed5'
+      Name: '&eGo To Bottom Right'
+      Lore: []
+    BottomLeft:
+      Icon: '288eb5f528cec583803757ba202c15362f84a3f6fbe8712e8ab256f25e5245'
+      Name: '&eGo To Bottom Left'
+      Lore: []
+    InfoItem:
+      Icon: 'e87031c4726ddedd65b6a11d3147e6724defbb290da29cbb79da2490546cbf'
+      Name: '  &aCurrent Logo'
+      Logo-Box: '█'
+
+
+##########################
+# Team Make Menu Options #
+##########################
+
+TeamMakeMenu:
+  Menu_Name: '&8&nTeam Make Menu'
+  Menu_Size: 18 # = 9*row
+  Buttons:
+    Close:
+      Loc: 14
+    NewTeamMake:
+      Icon: 'a92e31ffb59c90ab08fc9dc1fe26802035a3a47c42fee63423bcdb4262ecb9b6'
+      Name: '&eCreate New Team'
+      Lore: ["","&7Click and make new team", "&7for &b<price>$&7!", ""]
+      Loc: 8
+    NewTeamName:
+      Icon: 'b24070c9b6659ed25b2ca126915f4d8820fafce4324ed9a8f4b8a506345307f'
+      Name: '&eSet New Team Name'
+      Lore: ["","&7Click and set name", "&7to new team!", "","&7Current Name; <currentname>",""]
+      Loc: 6
+    NewTeamSize:
+      Icon: '63979e9639a14c3d46ce46d714d423cb159091839a762cf939716f1511fd15'
+      Name: '&eSet New Team Size'
+      Lore: ["","&7Right click to increase size,", "&7left click to decrease size.", "&7Current Size; &b<currentsize> Person","", "§eYou can edit size to later.", ""]
+      Loc: 4
+    NewTeamLogo:
+      Icon: '438cf3f8e54afc3b3f91d20a49f324dca1486007fe545399055524c17941f4dc'
+      Name: '&eSet New Team Logo'
+      Lore: ["","&7Click and make team logo!", ""]
+      Loc: 2
+
+
+##########################
+# Team Edit Menu Options #
+##########################
+
+TeamEditMenu:
+  Menu_Name: '&8&nTeam Menu'
+  Menu_Size: 36 # = 9*row
+  Buttons:
+    Close:
+      Loc: 32
+    LogoButton:
+      Icon: '438cf3f8e54afc3b3f91d20a49f324dca1486007fe545399055524c17941f4dc'
+      Name: '&eTeam Logo'
+      Lore:
+        - ''
+        - '&7Click to change logo for &b&l<team_change_cost>&r&e$.'
+        - ''
+      Loc: 1
+      Logo-Box: '█'
+    NameButton:
+      Icon: '211ab3a1132c9d1ef835ea81d972ed9b5cd8ddff0a07c55a749bcfcf8df5'
+      Name: '&eTeam Name'
+      Lore:
+        - ''
+        - ' &8• &7Current Name; &e<name>'
+        - ''
+        - '&7Click to change team name for &b&l<name_change_cost>&r&e$.'
+        - ''
+      Loc: 2
+    DescriptionButton:
+      Icon: '4235af166fa5f486d5c6b84f7abb0093a1ea01490c337f8045b4976bc93e7d60'
+      Name: '&eTeam Description'
+      Lore:
+        - ''
+        - ' &8• &7Current Description; &e<description>'
+        - ''
+        - '&7Click to change team description for &b&l<description_change_cost>&r&e$.'
+        - ''
+      Loc: 15
+    ShortNameButton:
+      Icon: 'eaa6285ab90e6ba98cfdff42f7e67537c844f33bcccbd81aa6d6c06cb281a797'
+      Name: '&eTeam Short Name'
+      Lore:
+        - ''
+        - ' &8• &7Current Short Name; &e<shortName>'
+        - ''
+        - '&7Click to change team short name for &b&l<shortname_change_cost>&r&e$.'
+        - ''
+      Loc: 16
+    SizeButton:
+      Icon: '469fff54f0cfa6cb7da91d78bbb8ea567763c3f937d76017583a2a6eeee8fe1'
+      Name: '&eTeam Size'
+      Lore:
+        - ''
+        - ' &8• &7Current Size; &e<size>/<max-size> %percentage%'
+        - ''
+        - '&7Click to manage size of team.'
+        - ''
+      Loc: 3
+    BalanceButton:
+      Icon: '8bc27d63306771bd53934c310519c40edbcd9174738717e01eabd51da0c0d73f'
+      Name: '&eTeam Balance'
+      Lore:
+        - ''
+        - ' &8• &7Current Balance; &e<balance>$'
+        - ''
+        - '&7Click to manage balance.'
+        - ''
+      Loc: 4
+    MemberControl:
+      Icon: 'd112cf1860d70256073ac7838b72469191f63813131c1f46890b46fee0859bf0'
+      Name: '&eTeam Member'
+      Lore:
+        - ''
+        - ' &8• &7Size of members; &e<members-size> Person'
+        - ' &8• &7Size of moderators; &e<mods-size> Person'
+        - ' &8• &7Size of admins; &e<admins-size> Person'
+        - ''
+        - '&7Click to manage members.'
+        - ''
+      Loc: 5
+    GeneralInfoButton:
+      Icon: '5b4ddb8abed660825b68b922e22a9558c2f208938bd438eaeaccdc3941'
+      Name: '&eGeneral Info'
+      Lore:
+        - ''
+        - ' &8• &7Team Name: <team-name>'
+        - ' &8• &7Team Balance: &e<team-balance>$'
+        - ' &8• &7Team Power: &e<team-power>'
+        - ' &8• &7Total Kills: &e<total-kills>'
+        - ' &8• &7Total Wins: &e<total-wins>'
+        - ' &8• &7Team Level: &e<team-level>'
+        - ' &8• &7Team Owner: &e<owner-name>'
+        - ''
+        - ' &8• &7Size of members; &e<members-size> Person'
+        - ' &8• &7Size of moderators; &e<mods-size> Person'
+        - ' &8• &7Size of admins; &e<admins-size> Person'
+        - ''
+      Loc: 6
+    WarOptions:
+      Icon: 'bb5d8b9a3a9421dcedb17d71e3a884d95ec5038c838ce19ed6d8e96c5b23ed7'
+      Name: '&eWar Menu'
+      Lore:
+        - ''
+        - '&7Click to join war options menu.'
+        - ''
+      Loc: 7
+    EnemyFriendsTeam:
+      Icon: '79cbb4d794da4c600eac20fdd662f421cd456a39167af7bb9e054674e0856d16'
+      Name: '&eRelationship Options'
+      Lore:
+        - ''
+        - ' &8• &7Enemy Teams: &e<enemies>'
+        - ' &8• &7Friend Teams: &e<friends>'
+        - ' &8• &7Neutral Teams: &e<neutrals>'
+        - ''
+        - '&7Click to join relationship option menu.'
+        - ''
+      Loc: 8
+    SpawnPoint:
+      Icon: '605ba45f53731769be2be182f13bf28de91c446f2a3422d88adbc849a316d6'
+      Name: '&eSpawn Point Options'
+      Lore:
+        - ''
+        - '&7Click to join spawn point option menu.'
+        - ''
+      Loc: 9
+    ClaimOptions:
+      Icon: '63f4d555fb3b9357af7582f273800f1da4ac69b04210c3aa34e63db2a4235bbf'
+      Name: '&eClaim Options'
+      Lore:
+        - ''
+        - ' &8• &7Current Claims: &e<claims>'
+        - ''
+        - '&7Click to join claim option menu.'
+        - ''
+      Loc: 10
+    LeaveTeam:
+      Icon: '1d3c33cf5b1c09418a3caa7f3969c11abe73de347cf45f8f285fdcc8d8ffe87'
+      Name: '&eLeave Team'
+      Lore:
+        - ''
+        - '&7Click to leave team.'
+        - ''
+      Loc: 11
+    RemoveTeam:
+      Icon: '5f4c21d17ad636387ea3c736bff6ade897317e1374cd5d9b1c15e6e8953432'
+      Name: '&c&nDelete Team'
+      Lore:
+        - ''
+        - '&4Dangerous button!'
+        - ''
+        - '&cIf you click to this button'
+        - '&cremove this team.'
+        - ''
+      Loc: 12
+    Invites:
+      Icon: '16439d2e306b225516aa9a6d007a7e75edd2d5015d113b42f44be62a517e574f'
+      Name: '&eTeam Join Requests'
+      Lore:
+        - ''
+        - '&7Click to see team join requests.'
+        - ''
+      Loc: 13
+    MessageBox:
+      Icon: '1d716256d727ba1df18f826f119051c33a394209a95be837ccf6fae9ee6b871b'
+      Name: '&eMessage Box'
+      Lore:
+        - ''
+        - '&7Click to see team messages.'
+        - ''
+      Loc: 14
+
+
+################################
+# Balance Control Menu Options #
+################################
+
+BalanceControlMenu:
+  Menu_Name: '&8&nBalance Control Menu'
+  Menu_Size: 18 # = 9*row
+  Buttons:
+    Close:
+      Loc: 15
+    Back:
+      Loc: 13
+    AddFundsButton:
+      Icon: 'eaea5d7127214ee2cca1b82ef82f8ae55929325766ea84dde18c11de0c7d591'
+      Name: '&eAdd Funds'
+      Lore:
+        - ''
+        - '&7Click and input value and confirm that.'
+        - ''
+      Loc: 3
+    WithdrawFundsButton:
+      Icon: 'f84ccff09f83a2aed9ebe08b6817eec667fb996d12986cb98ede41af58bb1d'
+      Name: '&eWithdraw Funds'
+      Lore:
+        - ''
+        - '&7Click and input value and confirm that.'
+        - ''
+      Loc: 7
+    InfoButton:
+      Icon: '21c63d9b9fd8742eaeb04c692172cb9da43781698a575cdabe1c04df12c3f'
+      Name: '&eBalance Info'
+      Lore:
+        - ''
+        - '&7Team Balance: &e<balance>$'
+        - '&7Your Balance: &e<p_balance>$'
+        - ''
+      Loc: 5
+
+
+################################
+#   Verification Menu Options  #
+################################
+
+Verification:
+  Abandon:
+    Menu_Name: '&c&nRemove Confirmation'
+    Menu_Size: 18 # = 9*row
+    Buttons:
+      Close:
+        Loc: 15
+      Back:
+        Loc: 13
+      Accept:
+        Icon: '6abec240a4cb51cadc185a66072a2aed7f56112696f246573a52ee7df4c32'
+        Name: '&cAccept'
+        Lore:
+          - ''
+          - '&cWarning!'
+          - '&7You are deleting your team now!'
+          - '&7There is &cno coming back&7!'
+          - ''
+        Loc: 3
+      Reject:
+        Icon: 'e283965923c0e3ead0fe8760e08cba8982e33a6acdb891ecc6f6dfe6d5d180bc'
+        Name: '&aReject'
+        Lore:
+          - ''
+          - '&aSuper!'
+          - '&7Click and return main team menu!'
+          - ''
+        Loc: 7
+  Leave:
+    Menu_Name: '&c&nLeave Confirmation'
+    Menu_Size: 18 # = 9*row
+    Buttons:
+      Close:
+        Loc: 15
+      Back:
+        Loc: 13
+      Accept:
+        Icon: '6abec240a4cb51cadc185a66072a2aed7f56112696f246573a52ee7df4c32'
+        Name: '&cAccept'
+        Lore:
+          - ''
+          - '&cWarning!'
+          - '&7You are leaving your team now!'
+          - ''
+        Loc: 3
+      Reject:
+        Icon: 'e283965923c0e3ead0fe8760e08cba8982e33a6acdb891ecc6f6dfe6d5d180bc'
+        Name: '&aReject'
+        Lore:
+          - ''
+          - '&aSuper!'
+          - '&7Click and return main team menu!'
+          - ''
+        Loc: 7
+  Claim:
+    Menu_Name: '&c&nClaim Remove Confirmation'
+    Menu_Size: 18 # = 9*row
+    Buttons:
+      Close:
+        Loc: 15
+      Back:
+        Loc: 13
+      Accept:
+        Icon: '6abec240a4cb51cadc185a66072a2aed7f56112696f246573a52ee7df4c32'
+        Name: '&cAccept'
+        Lore:
+          - ''
+          - '&cWarning!'
+          - '&7You are removing your claim now!'
+          - ''
+        Loc: 3
+      Info:
+        Icon: 'e87031c4726ddedd65b6a11d3147e6724defbb290da29cbb79da2490546cbf'
+        Name: '&eInformation of Claim'
+        Lore:
+          - ''
+          - ' &8• &7Center Location: &e<world>&7,&e <x>&7,&e <y>&7,&e <z>'
+          - ' &8• &7UUID: &e<uuid>'
+          - ''
+        Loc: 5
+      Reject:
+        Icon: 'e283965923c0e3ead0fe8760e08cba8982e33a6acdb891ecc6f6dfe6d5d180bc'
+        Name: '&aReject'
+        Lore:
+          - ''
+          - '&aSuper!'
+          - '&7Click and return main team menu!'
+          - ''
+        Loc: 7
+
+################################
+#       List All Team Menu     #
+################################
+
+TeamListMenu:
+  Menu_Name: '&8Teams : Page &e<page>'
+  Buttons:
+    OrderByName:
+      Icon: 'e713d2601e35242d35018cece3b34c61bf5001f5dbd7463a4c5587ac365b3d1f'
+      Name: '&eSort By Name'
+      Lore: []
+    OrderByWins:
+      Icon: '23324d1fa070cf698f2be539d69ff438aaa6b1f494c5e013c7ee9d9c33eb83c0'
+      Name: '&eSort By Wins'
+      Lore: []
+    OrderByKills:
+      Icon: 'b37e51ce0d4c8eadf675941a45e10b928e43d22eab539ac886edbf40bb87ec0f'
+      Name: '&eSort By Kills'
+      Lore: []
+    OrderByDate:
+      Icon: '6b31b79e380df31d5a4d649b1ae9fc02067d7e99487122d04d6d6ab7f7de6181'
+      Name: '&eSort By Make Date'
+      Lore: []
+    OrderByTeamMaker:
+      Icon: 'b94ac36d9a6fbff1c558941381e4dcf595df825913f6c383ffaa71b756a875d3'
+      Name: '&eSort By Team Maker Name'
+      Lore: []
+    ReadItem:
+      Icon: '3d35d4fb242c1cd4ba8fd0a0331c618cd18d2e2602cb1c8ca7c9b5c9b32bbeca'
+      Name: '&7Team &e#<number>'
+      Lore:
+        - ''
+        - ' &7• Team Name: <name>'
+        - ' &7• Owner: &e<owner>'
+        - ' &7• Size: &e<members>&7/&e<size> &6%percentage%'
+        - ' &7• Balance: &e<balance>$'
+        - ' &7• Creation Date: &e<cDate>'
+        - ' &7• Total Kills: &e<tKills> Kill'
+        - ' &7• Total Wins: &e<tWins> Win'
+        - ' &7• Level: &e<level> Level'
+        - ' &7• Power: &e<power>'
+        - ''
+        - '&eLeft click to send invite and join team.'
+
+################################
+#   Spawn Settings Team Menu   #
+################################
+
+SpawnSettingsMenu:
+  Menu_Name: '&8&nSpawn Settings Menu'
+  Menu_Size: 18 # = 9*row
+  Buttons:
+    Close:
+      Loc: 15
+    Back:
+      Loc: 13
+    SetMemberLocation:
+      Icon: '41139b3ef2e4c44a4c983f114cbe948d8ab5d4f879a5c665bb820e7386ac2f'
+      Name: '&eSet Member Spawn Location'
+      Lore:
+        - ''
+        - '&7Click to set member spawn location of your location.'
+        - ''
+        - '&7Current Spawn: &e<spawnLocation>'
+        - ''
+      Loc: 3
+    SetModLocation:
+      Icon: 'adc56355f11ce53e14d374ecf2a0b255301b734d99c674240afacc73e2145c'
+      Name: '&eSet Moderator Spawn Location'
+      Lore:
+        - ''
+        - '&7Click to set moderator spawn location of your location.'
+        - ''
+        - '&7Current Spawn: &e<spawnLocation>'
+        - ''
+      Loc: 5
+    SetAdminLocation:
+      Icon: '533a5bfc8a2a3a152d646a5bea694a425ab79db694b214f156c37c7183aa'
+      Name: '&eSet Admin Spawn Location'
+      Lore:
+        - ''
+        - '&7Click to set admin spawn location of your location.'
+        - ''
+        - '&7Current Spawn: &e<spawnLocation>'
+        - ''
+      Loc: 7
+
+
+################################
+#   Spawn Settings Team Menu   #
+################################
+
+SizeMenu:
+  Menu_Name: '&8&nSize Settings Menu'
+  Menu_Size: 18 # = 9*row
+  Buttons:
+    Close:
+      Loc: 15
+    Back:
+      Loc: 13
+    SaveNewSize:
+      Icon: '8942827d434faa81e84fd06882f9a1553cb7c20a113d5734f37ef480e0c2a59a'
+      Name: '&eSave New Size'
+      Lore:
+        - ''
+        - '&7Save new size of team.'
+        - ''
+      Loc: 3
+    UpgradeNewSize:
+      Icon: '58fe251a40e4167d35d081c27869ac151af96b6bd16dd2834d5dc7235f47791d'
+      Name: '&eUpgrade Size'
+      Lore:
+        - ''
+        - '&7Current Size: &e<teamSize> Person'
+        - '&7Upgrade Size: &e<upgradeSize> Person'
+        - '&7Size Difference: &e<sizeDiff> Unit'
+        - ''
+        - '&7Team Balance: &e<teamBalance>$'
+        - '&7Operation Cost: &e<cost>$'
+        - ''
+        - '&7Left click to upgrade new size,'
+        - '&7Right click to downgrade new size,'
+        - '&7shift to up/down grade &e5&7 unit.'
+      Loc: 7
+
+
+################################
+#  Check Invites Of Team Menu  #
+################################
+
+InviteCheckMenu:
+  Menu_Name: '&8Requests : Page &e<page>'
+  Buttons:
+    ReadItem:
+      Name: '&7Name: &e<pName>'
+      Lore:
+        - ''
+        - '&7Player Kills: &e<pKills>'
+        - '&7Player Deaths: &e<pDeaths>'
+        - '&7K/D: &e<KD>'
+        - '&7Current Team: &e<currentTeam>'
+        - ''
+        - '&eRight click to accept request,'
+        - '&eleft click to reject request.'
+
+
+################################
+#  Member Options Of Team Menu #
+################################
+
+MemberOptions:
+  Menu_Name: '&8&nMembers Control Menu'
+  Menu_Size: 18
+  Buttons:
+    Close:
+      Loc: 15
+    Back:
+      Loc: 13
+    MemberOptionsMenuButton:
+      Icon: 'f619f947ef2353903ae9be06ee375b30fa16f2679fdc3ab0188fbbe4500fef4'
+      Name: '&eMember Options'
+      Lore:
+        - ''
+        - '&7Click to manage member options.'
+        - '&7Members Size: &e<memberSize> Person'
+        - ''
+      Loc: 3
+    ModeratorOptionsMenuButton:
+      Icon: '6fdcfb400976bf73ec32c1b9962c830fc3d7006d749f8f3da3b6e0fb82909b28'
+      Name: '&eModerator Options'
+      Lore:
+        - ''
+        - '&7Click to manage moderator options.'
+        - '&7Moderators Size: &e<modSize> Person'
+        - ''
+      Loc: 5
+    AdminOptionsMenuButton:
+      Icon: 'f34f36d2dfd060d95f895305406f1b845bae00276465a45428d3cfd8630d4e61'
+      Name: '&eAdmin Options'
+      Lore:
+        - ''
+        - '&7Click to manage admin options.'
+        - '&7Admins Size: &e<adminSize> Person'
+        - ''
+      Loc: 7
+
+####################################
+# Member List Options Of Team Menu #
+####################################
+
+MemberOptionListMenu:
+  Menu_Name: '&8Member List | Page &e<page>'
+  Buttons:
+    ReadItem:
+      Name: '&7Player Name: &e<pName>'
+      Lore:
+        - ''
+        - '&7Left click to set private permissions of player,'
+        - '&7shift right click to promote moderator,'
+        - '&7shift left click to kick team.'
+        - ''
+    MemberPermissionSettings:
+      Icon: 'd01afe973c5482fdc71e6aa10698833c79c437f21308ea9a1a095746ec274a0f'
+      Name: '&eSet General Member Permissions'
+      Lore:
+        - ''
+        - '&7Click to set general permissions of members.'
+        - ''
+
+#####################################
+# Change Permissions Of Member Menu #
+#####################################
+
+ChangeMemberPermission:
+  Menu_Name: '&8Member Permissions | Page &e<page>'
+  Buttons:
+    ReadItem:
+      Name: '&e<permName>'
+      True-Icon: 'c607cffcd7864ff27c78b29a2c5955131a677bef6371f88988d3dcc37ef8873'
+      False-Icon: '533a5bfc8a2a3a152d646a5bea694a425ab79db694b214f156c37c7183aa'
+      Lore:
+        - ''
+        - '&7Click to change permission status.'
+        - '&7Has Permission: &e<hasPermission>'
+        - '&7Description: &e<description>'
+        - ''
+
+
+#######################################
+# Change Private Perms Of Member Menu #
+#######################################
+
+ChangePlayerPrivatePermissionMenu:
+  Menu_Name: '&e<playerName>&8''s Permissions'
+  Buttons:
+    ReadItem:
+      Name: '&e<permName>'
+      True-Icon: 'c607cffcd7864ff27c78b29a2c5955131a677bef6371f88988d3dcc37ef8873'
+      False-Icon: '533a5bfc8a2a3a152d646a5bea694a425ab79db694b214f156c37c7183aa'
+      Lore:
+        - ''
+        - '&7Click to change permission status.'
+        - '&7Has Permission: &e<hasPermission>'
+        - '&7Description: &e<description>'
+        - ''
+
+#######################################
+# Moderator List Options Of Team Menu #
+#######################################
+
+ModeratorOptionsListMenu:
+  Menu_Name: '&8Moderator List | Page &e<page>'
+  Buttons:
+    ReadItem:
+      Name: '&7Player Name: &e<pName>'
+      Lore:
+        - ''
+        - '&7Left click to set private permissions of player,'
+        - '&7right click to degrade moderator to member,'
+        - '&7shift right click to promote admin,'
+        - '&7shift left click to kick team.'
+        - ''
+    ModeratorPermissionSettings:
+      Icon: 'd01afe973c5482fdc71e6aa10698833c79c437f21308ea9a1a095746ec274a0f'
+      Name: '&eSet General Moderator Permissions'
+      Lore:
+        - ''
+        - '&7Click to set general permissions of moderators.'
+        - ''
+
+########################################
+# Change Permissions Of Moderator Menu #
+########################################
+
+ChangeModeratorPermissions:
+  Menu_Name: '&8Moderator Permissions | Page &e<page>'
+  Buttons:
+    ReadItem:
+      Name: '&e<permName>'
+      True-Icon: 'c607cffcd7864ff27c78b29a2c5955131a677bef6371f88988d3dcc37ef8873'
+      False-Icon: '533a5bfc8a2a3a152d646a5bea694a425ab79db694b214f156c37c7183aa'
+      Lore:
+        - ''
+        - '&7Click to change permission status.'
+        - '&7Has Permission: &e<hasPermission>'
+        - '&7Description: &e<description>'
+        - ''
+
+###################################
+# Admin List Options Of Team Menu #
+###################################
+
+AdminOptionsListMenu:
+  Menu_Name: '&8Admin List | Page &e<page>'
+  Buttons:
+    ReadItem:
+      Name: '&7Player Name: &e<pName>'
+      Lore:
+        - ''
+        - '&7Left click to set private permissions of player,'
+        - '&7right click to degrade admin to moderator,'
+        - '&7shift left click to kick team.'
+        - ''
+    AdminPermissionSettings:
+      Icon: 'd01afe973c5482fdc71e6aa10698833c79c437f21308ea9a1a095746ec274a0f'
+      Name: '&eSet General Admin Permissions'
+      Lore:
+        - ''
+        - '&7Click to set general permissions of admins.'
+        - ''
+
+########################################
+# Change Permissions Of Moderator Menu #
+########################################
+
+ChangeAdminPermissions:
+  Menu_Name: '&8Admin Permissions | Page &e<page>'
+  Buttons:
+    ReadItem:
+      Name: '&e<permName>'
+      True-Icon: 'c607cffcd7864ff27c78b29a2c5955131a677bef6371f88988d3dcc37ef8873'
+      False-Icon: '533a5bfc8a2a3a152d646a5bea694a425ab79db694b214f156c37c7183aa'
+      Lore:
+        - ''
+        - '&7Click to change permission status.'
+        - '&7Has Permission: &e<hasPermission>'
+        - '&7Description: &e<description>'
+        - ''
+
+##################################
+# Enemy-Friend Team Control Menu #
+##################################
+
+EFTeamControl:
+  Menu_Name: '&8&nEF Team Control Menu'
+  Menu_Size: 18
+  Buttons:
+    Close:
+      Loc: 15
+    Back:
+      Loc: 13
+    EnemyTeams:
+      Icon: 'c554843286108f464a1d6da4c5a4d1b472d660ef37f96c3d579e23e92062537d'
+      Name: '&cEnemy Teams'
+      Lore:
+        - ''
+        - '&7Click to view enemy teams!'
+        - ''
+      Loc: 3
+    NeutralTeams:
+      Icon: '323e619dcb7511cdc252a5dca8565b19d952ac9f82d467e66c52242f9cd88fa'
+      Name: '&fNeutral Teams'
+      Lore:
+        - ''
+        - '&7Click to view neutral teams!'
+        - ''
+      Loc: 5
+    FriendTeams:
+      Icon: 'b4ee1c91fc6e6c3bdbb553b4cfa2b9ad6b9883868c3ed64dff742e716698f'
+      Name: '&aFriend Teams'
+      Lore:
+        - ''
+        - '&7Click to view friend teams!'
+        - ''
+      Loc: 7
+    RelationRequests:
+      Icon: '1cd6bd9883b2fa33d1eb11cca35b5b83eeb63048cf9589ae5ff08199b05eae'
+      Name: '&7Friend Requests'
+      Lore:
+        - ''
+        - '&7Click to view friend-team requests!'
+        - ''
+      Loc: 14
+
+
+##################################
+#    Friend Teams Control Menu   #
+##################################
+
+FriendTeams:
+  Menu_Name: '&8Friend Teams : Page &e<page>'
+  Buttons:
+    ReadItem:
+      Icon: '5dee321da42d6c703f1e15e26eef15f5c404a833d80adcd5fd415e16ea4e0'
+      Name: '&eTeam Name: <teamName>'
+      Lore:
+        - ''
+        - ' &8• &7Team Owner: &e<teamOwner>'
+        - ' &8• &7Team Size: &e<teamMembers>/<teamSize>'
+        - ' &8• &7Team Power: &e<teamPower> Power'
+        - ' &8• &7Team Level: &e<teamLevel> Level'
+        - ' &8• &7Team Balance: &e<teamBalance>$'
+        - ' &8• &7Team Wins: &e<teamWins> Win'
+        - ' &8• &7Team Kills: &e<teamKills> Kill'
+        - ''
+        - '&cShift right click to remove friend team,'
+        - '&7left click to view member of this team.'
+        - ''
+
+
+##################################
+#    Enemy Teams Control Menu   #
+##################################
+
+EnemyTeams:
+  Menu_Name: '&8Enemy Teams : Page &e<page>'
+  Buttons:
+    ReadItem:
+      Icon: '8e6fba42c2b5a04919f186615b5f17e2e27783da4a2369b7505936863494e4'
+      Name: '&eTeam Name: <teamName>'
+      Lore:
+        - ''
+        - ' &8• &7Team Owner: &e<teamOwner>'
+        - ' &8• &7Team Size: &e<teamMembers>/<teamSize>'
+        - ' &8• &7Team Power: &e<teamPower> Power'
+        - ' &8• &7Team Level: &e<teamLevel> Level'
+        - ' &8• &7Team Balance: &e<teamBalance>$'
+        - ' &8• &7Team Wins: &e<teamWins> Win'
+        - ' &8• &7Team Kills: &e<teamKills> Kill'
+        - ''
+        - '&cShift right click to remove enemy team,'
+        - '&7left click to view member of this team.'
+        - ''
+
+
+##################################
+#    Enemy Teams Control Menu   #
+##################################
+
+NeutralTeams:
+  Menu_Name: '&8Neutral Teams : Page &e<page>'
+  Buttons:
+    ReadItem:
+      Icon: 'f6fcebc5cd347e303e4e3a5948d0b247b0dbcc410abaf89d367938ff1134695'
+      Name: '&eTeam Name: <teamName>'
+      Lore:
+        - ''
+        - ' &8• &7Team Owner: &e<teamOwner>'
+        - ' &8• &7Team Size: &e<teamMembers>/<teamSize>'
+        - ' &8• &7Team Power: &e<teamPower> Power'
+        - ' &8• &7Team Level: &e<teamLevel> Level'
+        - ' &8• &7Team Balance: &e<teamBalance>$'
+        - ' &8• &7Team Wins: &e<teamWins> Win'
+        - ' &8• &7Team Kills: &e<teamKills> Kill'
+        - ''
+        - '&aRight click to send friend team request,'
+        - '&cleft click to add this team on enemy teams,'
+        - '&7shift click to view members of team.'
+        - ''
+
+
+##################################
+#  Show Member Of Any Team Menu  #
+##################################
+
+ShowMembersMenu:
+  Menu_Name: '&8Team Members : Page &e<page>'
+  Buttons:
+    ReadItem:
+      Name: '&ePlayer Name: &b<playerName>'
+      Lore:
+        - ''
+        - ' &8• &7Player Kills: &e<playerKills> Kills'
+        - ' &8• &7Player Deaths: &e<playerDeaths> Deaths'
+        - ' &8• &7Player K/D: &e<KD>%'
+        - ''
+
+
+##################################
+#   Team Friend Requests Menu    #
+##################################
+
+RequestsMenu:
+  Menu_Name: '&8Friend Team Requests : Page &e<page>'
+  Buttons:
+    ReadItem:
+      Icon: '5dee321da42d6c703f1e15e26eef15f5c404a833d80adcd5fd415e16ea4e0'
+      Name: '&eTeam Name: <teamName>'
+      Lore:
+        - ''
+        - ' &8• &7Team Owner: &e<teamOwner>'
+        - ' &8• &7Team Size: &e<teamMembers>/<teamSize>'
+        - ' &8• &7Team Power: &e<teamPower> Power'
+        - ' &8• &7Team Level: &e<teamLevel> Level'
+        - ' &8• &7Team Balance: &e<teamBalance>$'
+        - ' &8• &7Team Wins: &e<teamWins> Win'
+        - ' &8• &7Team Kills: &e<teamKills> Kill'
+        - ''
+        - '&aRight click to accept friend team invite,'
+        - '&cleft click to reject invite.'
+        - ''
+
+##################################
+#       Message Box Menu         #
+##################################
+
+MessageBox:
+  Menu_Name: '&8Team Messages : Page &e<page>'
+  Buttons:
+    Clear:
+      Icon: '94c28ffb9063e63037c7c9c3a99975333254946ddfa0018996151740a5c66842'
+      Name: '&cClear/Remove All Messages'
+      Lore:
+        - ''
+        - '&7Click to clear all messages!'
+        - ''
+    ClearReadMessage:
+      Icon: 'c02154af4fdf893e1b65d74463c853c66bf7f05b1a2efac510448c59d335dc0d'
+      Name: '&cClear/Remove Read Messages'
+      Lore:
+        - ''
+        - '&7Click to clear read messages!'
+        - ''
+    MarkRead:
+      Icon: 'd91b3d3fb72251fc686ab67b2109f8be75c628da2a4d3a8258a1715f82b6d'
+      Name: '&cMark All Messages Read'
+      Lore:
+        - ''
+        - '&7Click to mark all messages read!'
+        - ''
+    ReadItem:
+      Read-Icon: '70799f5effc891e334faa7f45d0bdd956d4e215d8a7ad55c310941aa96723'
+      Unread-Icon: 'b4bd9dd128c94c10c945eadaa342fc6d9765f37b3df2e38f7b056dc7c927ed'
+      Name: '&eMessage No: <messageNo>'
+      Lore:
+        - ''
+        - '&7Right click to open message,'
+        - '&7left click to mark as read,'
+        - '&7shift left to remove message.'
+        - ''
+
+
+##################################
+#          Claim Menu            #
+##################################
+
+ClaimMenu:
+  Menu_Name: '&8&nClaim Options'
+  Menu_Size: 18 # = 9*row
+  Buttons:
+    Close:
+      Loc: 15
+    Back:
+      Loc: 13
+    NewClaim:
+      Icon: '302f48f34d22ded7404f76e8a132af5d7919c8dcd51df6e7a85ddfac85ab'
+      Name: '&eTake New Claim'
+      Lore:
+        - ''
+        - '&7How to take claim ?'
+        - '&7Easy! All you have to do is go to a block'
+        - '&7and press this button!'
+        - ''
+        - '&7Then an informative message will come.'
+        - ''
+      Loc: 3
+    CurrentClaims:
+      Icon: '302f48f34d22ded7404f76e8a132af5d7919c8dcd51df6e7a85ddfac85ab'
+      Name: '&eCurrent Claims'
+      Lore:
+        - ''
+        - '&7Your team has &e<count> &7claims,'
+        - '&7click an see there!'
+        - ''
+      Loc: 7
+    # If in config.yml Border_Show_Sistem is true, showing this button else not show.
+    BorderSettings:
+      Icon: '84859d0adfc93be19bb441e6edfd43f6bfe6912723033f963d009a11c4824510'
+      Name: '&eBorder Settings'
+      Lore:
+        - ''
+        - '&7Left click open/close border!'
+        - '&7Status: &e<status>'
+        - ''
+      Loc: 5
+
+
+##################################
+#       Team Claims Menu         #
+##################################
+
+TeamClaimsMenu:
+  Menu_Name: '&8Team Claims : Page &e<page>'
+  Buttons:
+    ReadItem:
+      Icon: 'aa4b7e87821db4e6e42e78d7f260b637993d6be8de94f43e43175baff91f5'
+      Name: '&eClaim No: <claimNo>'
+      Lore:
+        - ''
+        - ' &8• &7Claim Size: &e<size>'
+        - ' &8• &7Total Blocks Size: &e<totalBlocks>'
+        - ' &8• &7World: &e<world>'
+        - ' &8• &7Center Location(x,y,z): &e<x>, <y>, <z>'
+        - ''
+        - '&aRight click to tp this claim,'
+        - '&aleft click to open auto build menu,'
+        - '&cshift left click to remove claim.'
+        - ''
+
+
+##################################
+#       Auto Build Menu          #
+##################################
+
+AutoBuildMenu:
+  Menu_Name: '&8Schematics : Page &e<page>'
+  Buttons:
+    ReadItem:
+      Icon: 'c3d14561bbd063f70424a8afcc37bfe9c74562ea36f7bfa3f23206830c64faf1'
+      Name: '&eSchematic No: <schematicNo>'
+      Lore:
+        - ''
+        - ' &8• &7Schematic Name: &e<sName>'
+        - ' &8• &7Total Blocks: &e<totalBlocks> Block'
+        - ' &8• &7Price: &e<price>$'
+        - ' &8• &7Required Team Level: &e<min-level> Level'
+        - ''
+        - ' &8• &7Suitable: &e<suitable>'
+        - ''
+        - '&7If you want to see this schematic'
+        - '&7go, &e/warp schematics&7!'
+        - ''
+        - '&aLeft click to build schematic.'
+
+
+##################################
+#           War  Menu            #
+##################################
+
+WarMenu:
+  Menu_Name: '&8&nWar Menu'
+  Menu_Size: 18 # = 9*row
+  Buttons:
+    Close:
+      Loc: 15
+    Back:
+      Loc: 13
+    NewSiege:
+      Icon: '5b12f29354e9f72c4ad8c6fb89b9218bf24b854e3c8db6ddd45dbe0159'
+      Name: '&eSiege of Team'
+      Lore:
+        - ''
+        - '&7Select claim and surround'
+        - '&7team claims!'
+        - ''
+      Loc: 3
+    SetWarriors:
+      Icon: '5566114c62359ab7f1f5161fd3c2d268282e222da2d588c28c4d6a09ee6a5a7'
+      Name: '&eSet Warriors'
+      Lore:
+        - ''
+        - '&7Select warriors for team wars!'
+        - '&7Size of warriors: &e<size>'
+        - ''
+      Loc: 5
+    WeeklyWar:
+      Icon: 'b86b9d58bcd1a555f93e7d8659159cfd25b8dd6e9bce1e973822824291862'
+      Name: '&eWeekly War Options'
+      Lore:
+        - ''
+        - '&7Select warriors, chose kits'
+        - '&7and join this war.'
+        - ''
+      Loc: 7
+
+##################################
+#         Wars Show Menu         #
+##################################
+
+WarsMenu:
+  Menu_Name: '&8Wars : Page §e<page>'
+  Status:
+    Waiting: '&aWaiting'
+    In-War: '&6Progress'
+    Pass: '&cIt''s Over'
+  Buttons:
+    OtherWarInfo:
+      Icon: 'c60b0d6e1cdfd98b637747a9cd5a453b1170d3802d7b17d044b6ce2e4d65a0a0'
+      Name: '&eNext Weekly War'
+      Lore:
+        - ''
+        - '&e<date>'
+        - ''
+    ReadItem:
+      Icon: '942c86873a155b82e66e827f9acbaf9c600bb01fef70d875d3f9b49d0279cb47'
+      Name: '&eWar No: <warNo>'
+      Lore:
+        - ''
+        - ' &8• &7War Time: &e<warTime>'
+        - ''
+        - ' &8• &7Team 1 Name: &e<name_1>'
+        - ' &8• &7Team 2 Name: &e<name_2>'
+        - ''
+        - ' &8• &7Team 1 Level: &e<level_1>'
+        - ' &8• &7Team 2 Level: &e<level_2>'
+        - ''
+        - ' &8• &7Status: &e<status>'
+        - ''
+
+
+##################################
+#           Siege Menu           #
+##################################
+
+SiegeMenu:
+  Menu_Name: '&8Siege Menu : Page §e<page>'
+  Buttons:
+    OrderByName:
+      Icon: 'e713d2601e35242d35018cece3b34c61bf5001f5dbd7463a4c5587ac365b3d1f'
+      Name: '&eSort By Name'
+      Lore: []
+    OrderByWins:
+      Icon: '23324d1fa070cf698f2be539d69ff438aaa6b1f494c5e013c7ee9d9c33eb83c0'
+      Name: '&eSort By Wins'
+      Lore: []
+    OrderByKills:
+      Icon: 'b37e51ce0d4c8eadf675941a45e10b928e43d22eab539ac886edbf40bb87ec0f'
+      Name: '&eSort By Kills'
+      Lore: []
+    OrderByDate:
+      Icon: '6b31b79e380df31d5a4d649b1ae9fc02067d7e99487122d04d6d6ab7f7de6181'
+      Name: '&eSort By Make Date'
+      Lore: []
+    OrderByTeamMaker:
+      Icon: 'b94ac36d9a6fbff1c558941381e4dcf595df825913f6c383ffaa71b756a875d3'
+      Name: '&eSort By Team Maker Name'
+      Lore: []
+    ReadItem:
+      Icon: '3d35d4fb242c1cd4ba8fd0a0331c618cd18d2e2602cb1c8ca7c9b5c9b32bbeca'
+      Name: '&7Team &e#<number>'
+      Lore:
+        - ''
+        - ' &7• Team Name: <name>'
+        - ' &7• Owner: &e<owner>'
+        - ' &7• Size: &e<members>&7/&e<size> &6%percentage%'
+        - ' &7• Balance: &e<balance>$'
+        - ' &7• Creation Date: &e<cDate>'
+        - ' &7• Total Kills: &e<tKills> Kill'
+        - ' &7• Total Wins: &e<tWins> Win'
+        - ' &7• Level: &e<level> Level'
+        - ' &7• Power: &e<power>'
+        - ''
+        - '&eClick and select this team''s'
+        - '&eanyone claim for take surround!'
+        - ''
+
+##################################
+#       Set Warriors Menu        #
+##################################
+
+SetWarriorsMenu:
+  Menu_Name: '&8Members : Page §e<page>'
+  Buttons:
+    ReadItem:
+      Name: '&e<pName>'
+      Lore:
+        - ''
+        - ' &8• &7Is Warrior: &e<status>'
+        - ''
+        - '&eClick to change status.'
+        - ''
+
+##################################
+#       Siege Claims Menu        #
+##################################
+
+SiegeClaims:
+  Menu_Name: '&8Claims : Page §e<page>'
+  Buttons:
+    ReadItem:
+      Icon: 'aa4b7e87821db4e6e42e78d7f260b637993d6be8de94f43e43175baff91f5'
+      Name: '&b#<id>'
+      Lore:
+        - ''
+        - ' &8• &7World: &e<world>'
+        - ' &8• &7X: &e<centerX>'
+        - ' &8• &7Y: &e<centerY>'
+        - ' &8• &7Z: &e<centerZ>'
+        - ''
+        - ' &8• &7Size: &e<size>'
+        - ''
+        - ' &8• &7Claim Owner: <claimOwner>'
+        - ''
+        - '&eClick to siege with your warriors.'
+        - ''
+
+
+
+##################################
+#       War Options Menu         #
+##################################
+
+WarOptionsMenu:
+  Menu_Name: '&8&nWar Options Menu'
+  Menu_Size: 18 # = 9*row
+  Status:
+    Joined: '&aJoined'
+    Not-Joined: '&cNot-Joined'
+  Buttons:
+    Close:
+      Loc: 15
+    Back:
+      Loc: 13
+    StatusChangeButton:
+      Icon: 'c2412548ebd6897e808c1fcbbf5bf7a625fe15fa48fbff4cf822b0c8e57a8'
+      Name: '&eWar Status Change'
+      Lore:
+        - ''
+        - '&7Click and change your team war'
+        - '&7join status. If you will join war,'
+        - '&7you can''t remove team until the finish war.'
+        - ''
+        - '&7War Status: &e<status>'
+        - ''
+      Loc: 3
+    KitOptions:
+      Icon: '34dbcb7e1fbecea9a7350436cbbea2b496f74c297204f1bb9acc3878d542ccb'
+      Name: '&eKits'
+      Lore:
+        - ''
+        - '&7Select war kits!'
+        - ''
+      Loc: 7
+
+##################################
+#        Kit  Edit  Menu         #
+##################################
+
+KitEditMenu:
+  Menu_Name: '&8&nKit Edit Menu'
+  Buttons:
+    CostButton:
+      Icon: '8bc27d63306771bd53934c310519c40edbcd9174738717e01eabd51da0c0d73f'
+      Name: '&eSet Cost'
+      Lore:
+        - ''
+        - '&7Current Value: &e<value>$'
+        - ''
+        - '&eLeft click to up 10$,'
+        - '&eright click to down 10$,'
+        - '&eshift clicks to 1000$.'
+        - ''
+    LevelButton:
+      Icon: '93721b62dda3e606b92bb33a0204e62ced4324c98f1f44d6adc2908bb5d9c'
+      Name: '&eSet Minimum Level'
+      Lore:
+        - ''
+        - '&7Current Value: &e<value> Level'
+        - ''
+        - '&eLeft click to up 1 level,'
+        - '&eright click to down 1 level,'
+        - '&eshift clicks to 10 level.'
+        - ''
+    SaveButton:
+      Icon: '75b4298fbf5ee172332e03f8a0e1a4b44bf6353cab27455c73281a11984a9b91'
+      Name: '&eSave Kit'
+      Lore: []
+
+
+##################################
+#    Team Kit Selection Menu     #
+##################################
+
+KitSelectionMenu:
+  Menu_Name: '&8Kit Selection Menu : Page §e<page>'
+  Status:
+    Admin-Kit: '&aThis kit selected for admins!'
+    Mod-Kit: '&aThis kit selected for moderator!'
+    Member-Kit: '&aThis kit selected for members!'
+  Buttons:
+    ReadItem:
+      Icon: '9b70cb7c5a2a1af4572b17f09d291988afb575c2978af8e9c1240ff90da50a4'
+      Name: '&b#<id>'
+      Lore:
+        - ''
+        - ' &8• &7Kit Name: &e<kitName>'
+        - ' &8• &7Kit Cost Per Person: &e<kitCostPerPerson>$'
+        - ' &8• &7Total Kit Cost: &e<kitCostGenerally>'
+        - ' &8• &7Required Team Level: &e<reqTeamLevel>'
+        - ''
+        - '&eLeft click to set members kit,'
+        - '&eright click to set moderators kit,'
+        - '&eshift left click to set admins kit,'
+        - '&eshift right click to show kit.'
+        - ''
+
+
+
+##################################
+#         Kit Show Menu          #
+##################################
+
+KitShowMenu:
+  Menu_Name: '&8&nKit Name: &e<name>'
