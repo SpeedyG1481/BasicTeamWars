@@ -2,14 +2,13 @@ package com.speedyg.btw.menu.absclass;
 
 import com.speedyg.btw.BasicTeamWars;
 import com.speedyg.btw.systems.Skull;
-import com.speedyg.btw.team.ABSTeam;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -40,7 +39,10 @@ public abstract class Menu {
 
     public void openMenu() {
         this.loadItems();
-        this.p.openInventory(this.inv);
+        Bukkit.getScheduler().runTask(BasicTeamWars.getInstance(), () -> {
+            this.p.openInventory(this.inv);
+        });
+
     }
 
     protected ItemStack previous() {

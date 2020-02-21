@@ -2,6 +2,7 @@ package com.speedyg.btw.systems;
 
 
 import com.speedyg.btw.BasicTeamWars;
+import com.speedyg.btw.Version;
 import com.speedyg.btw.systems.ReflectionUtils.PackageType;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -26,7 +27,7 @@ public class BookUtil {
     static {
         try {
             getHandle = ReflectionUtils.getMethod("CraftPlayer", PackageType.CRAFTBUKKIT_ENTITY, "getHandle");
-            if (Bukkit.getServer().getClass().getPackage().getName().substring(23).contains("1_8"))
+            if (BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_8))
                 openBook = ReflectionUtils.getMethod("EntityPlayer", PackageType.MINECRAFT_SERVER, "openBook", PackageType.MINECRAFT_SERVER.getClass("ItemStack"));
             else
                 openBook = ReflectionUtils.getMethod("EntityPlayer", PackageType.MINECRAFT_SERVER, "a", PackageType.MINECRAFT_SERVER.getClass("ItemStack"), PackageType.MINECRAFT_SERVER.getClass("EnumHand"));
@@ -67,7 +68,7 @@ public class BookUtil {
 
     private static void sendPacket(ItemStack i, Player p) throws ReflectiveOperationException {
         Object entityPlayer = getHandle.invoke(p);
-        if (Bukkit.getServer().getClass().getPackage().getName().substring(23).contains("1_8")) {
+        if (BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_8)) {
             openBook.invoke(entityPlayer, getItemStack(i));
         } else {
             Class<?> enumHand = PackageType.MINECRAFT_SERVER.getClass("EnumHand");

@@ -1,6 +1,7 @@
 package com.speedyg.btw.menu.verification;
 
 import com.speedyg.btw.BasicTeamWars;
+import com.speedyg.btw.LogLevel;
 import com.speedyg.btw.menu.absclass.Menu;
 import com.speedyg.btw.menu.absclass.VerificationMenu;
 import com.speedyg.btw.messages.Messages;
@@ -87,6 +88,7 @@ public class AbandonVerification extends VerificationMenu implements Listener {
                                 ABSTeam team = ABSTeam.getTeamByTeamUUID(this.team);
                                 if (!main.getTimer().getWar().getTeamList().contains(team.getTeamUUID())) {
                                     team.removeTeam();
+                                    main.log(LogLevel.INFO, "Team has been removed!.. Removed Team UUID: " + team.getTeamUUID().toString());
                                     p.sendMessage(Messages.team_deleted);
                                 } else {
                                     p.sendMessage(Messages.team_remove_abandoned);

@@ -1,6 +1,7 @@
 package com.speedyg.btw.menu.verification;
 
 import com.speedyg.btw.BasicTeamWars;
+import com.speedyg.btw.LogLevel;
 import com.speedyg.btw.menu.absclass.Menu;
 import com.speedyg.btw.menu.absclass.VerificationMenu;
 import com.speedyg.btw.messages.Messages;
@@ -105,6 +106,7 @@ public class ClaimRemoveVerification extends VerificationMenu implements Listene
                                 ABSTeam team = ABSTeam.getTeamByTeamUUID(this.team);
                                 team.removeClaim(claim.getClaimUUID().toString());
                                 claim.removeClaim();
+                                main.log(LogLevel.PLAYER_INFO, p.getName() + " is removed team claim! Claim UUID:" + claim.getClaimUUID().toString());
                                 team.saveTeam();
                                 p.closeInventory();
                                 p.sendMessage(Messages.claim_removed);

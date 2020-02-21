@@ -171,9 +171,6 @@ public class Messages {
     public static String logo_change_success;
     public static String not_enough_money;
     public static String team_name_changed;
-    public static String add_fund_message_1;
-    public static String add_fund_message_2;
-    public static String add_fund_message_3;
     public static String add_fund_success;
     public static String not_enough_money_player;
     public static String withdraw_success;
@@ -928,18 +925,6 @@ public class Messages {
         if (BasicTeamWars.getInstance().getMessageOptions().getString("SELECT_WAR_KITS_DESCRIPTION") == null)
             BasicTeamWars.getInstance().getMessageOptions().set("SELECT_WAR_KITS_DESCRIPTION", "The person with this permission may change war kits of your team.");
         SELECT_WAR_KITS_DESCRIPTION = BasicTeamWars.getInstance().getMessageOptions().getString("SELECT_WAR_KITS_DESCRIPTION").replaceAll("&", "§");
-
-        if (BasicTeamWars.getInstance().getMessageOptions().getString("Add_Fund_Sign_Message_1") == null)
-            BasicTeamWars.getInstance().getMessageOptions().set("Add_Fund_Sign_Message_1", "&4Please input value");
-        add_fund_message_1 = BasicTeamWars.getInstance().getMessageOptions().getString("Add_Fund_Sign_Message_1").replaceAll("&", "§");
-
-        if (BasicTeamWars.getInstance().getMessageOptions().getString("Add_Fund_Sign_Message_2") == null)
-            BasicTeamWars.getInstance().getMessageOptions().set("Add_Fund_Sign_Message_2", "&4just numbers and");
-        add_fund_message_2 = BasicTeamWars.getInstance().getMessageOptions().getString("Add_Fund_Sign_Message_2").replaceAll("&", "§");
-
-        if (BasicTeamWars.getInstance().getMessageOptions().getString("Add_Fund_Sign_Message_3") == null)
-            BasicTeamWars.getInstance().getMessageOptions().set("Add_Fund_Sign_Message_3", "&4press enter or ok!");
-        add_fund_message_3 = BasicTeamWars.getInstance().getMessageOptions().getString("Add_Fund_Sign_Message_3").replaceAll("&", "§");
 
         if (BasicTeamWars.getInstance().getMessageOptions().getString("Add_Fund_Success_Message") == null)
             BasicTeamWars.getInstance().getMessageOptions().set("Add_Fund_Success_Message", "&aSuccess! &7Fund added to team!");

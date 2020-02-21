@@ -1,19 +1,5 @@
 package com.speedyg.btw.systems;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.*;
-import java.util.function.BiPredicate;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-
-import com.comphenix.protocol.reflect.StructureModifier;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
-
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketAdapter;
@@ -21,6 +7,23 @@ import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
 import com.comphenix.protocol.wrappers.BlockPosition;
 import com.comphenix.protocol.wrappers.nbt.NbtCompound;
+import com.speedyg.btw.BasicTeamWars;
+import com.speedyg.btw.Version;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.BiPredicate;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
 
 public final class SignMenuFactory {
 
@@ -61,8 +64,7 @@ public final class SignMenuFactory {
                     public void onPacketReceiving(PacketEvent event) {
                         PacketContainer packet = event.getPacket();
                         Player player = event.getPlayer();
-                        StructureModifier<String[]> logIn = packet.getStringArrays();
-                        String[] input = logIn.read(0);
+                        String[] input = packet.getStringArrays().read(0);
                         Menu menu = inputReceivers.remove(player);
                         BlockPosition blockPosition = signLocations.remove(player);
                         if (menu == null || blockPosition == null) {
@@ -110,12 +112,17 @@ public final class SignMenuFactory {
             return this;
         }
 
-        @Deprecated
         public void open() {
             Location location = this.player.getLocation();
             BlockPosition blockPosition = new BlockPosition(location.getBlockX(), location.getBlockY() - 5,
                     location.getBlockZ());
-            player.sendBlockChange(blockPosition.toLocation(location.getWorld()), Material.getMaterial("WALL_SIGN"), (byte) 0);
+            Material sign;
+            if (BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_14) || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_15) || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_16)) {
+                sign = Material.BIRCH_WALL_SIGN;
+            } else {
+                sign = Material.getMaterial("WALL_SIGN");
+            }
+            player.sendBlockChange(blockPosition.toLocation(location.getWorld()), sign, (byte) 0);
 
             PacketContainer openSign = ProtocolLibrary.getProtocolManager()
                     .createPacket(PacketType.Play.Server.OPEN_SIGN_EDITOR);

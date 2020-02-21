@@ -1,6 +1,7 @@
 package com.speedyg.btw.team;
 
 import com.speedyg.btw.BasicTeamWars;
+import com.speedyg.btw.LogLevel;
 import com.speedyg.btw.filesystem.System;
 import com.speedyg.btw.messages.Messages;
 import com.speedyg.btw.team.claim.Claim;
@@ -32,6 +33,7 @@ import java.util.UUID;
  * @version 1.0.0-ALFA
  * @since 18.12.2019
  */
+
 public class ABSTeam {
 
     public int MAX_TEAM_SIZE;
@@ -456,6 +458,7 @@ public class ABSTeam {
 
     }
 
+
     public void removeMember(UUID p) {
         for (String px : this.members) {
             if (Bukkit.getOfflinePlayer(UUID.fromString(px)).isOnline()) {
@@ -480,7 +483,7 @@ public class ABSTeam {
                 }
             }
         }
-
+        BasicTeamWars.getInstance().log(LogLevel.PLAYER_INFO, "The member " + player.getPlayer().getName() + " joined " + teamUUID + " team with the UUID.");
         this.warriors.remove(p.toString());
         this.members.remove(p.toString());
         this.mods.remove(p.toString());
@@ -515,21 +518,28 @@ public class ABSTeam {
         return !(this.members.size() <= size);
     }
 
+
     private void setBalance(long balance) {
         this.balance = balance;
 
     }
 
+
     public void addBalance(long balance) {
         this.balance += balance;
-
+        BasicTeamWars.getInstance().log(LogLevel.PLAYER_INFO,
+                "Balance added the team with UUID; " + teamUUID + ", amount; " + balance + ", new balance; " + this.balance);
     }
 
+
     public void removeBalance(long balance) {
+
         if (this.balance - balance <= 0)
             this.balance = 0;
         else
             this.balance -= balance;
+        BasicTeamWars.getInstance().log(LogLevel.PLAYER_INFO,
+                "Balance removed the team with UUID; " + teamUUID + ", amount; " + balance + ", new balance; " + this.balance);
 
     }
 
@@ -537,6 +547,7 @@ public class ABSTeam {
         this.power = power;
 
     }
+
 
     public void removePower(int power) {
         if (this.power - power <= 0) {
@@ -553,6 +564,7 @@ public class ABSTeam {
         }
     }
 
+    //
     public void addPower(int power) {
         if (this.power + power >= MAX_POWER) {
             if (this.teamLevel + ((this.power + power) / MAX_POWER) < MAX_LEVEL) {
@@ -572,7 +584,6 @@ public class ABSTeam {
         for (String uuid : this.claims) {
             Claim claim = Claim.getClaim(UUID.fromString(uuid));
             claim.saveClaim();
-
         }
     }
 
@@ -733,11 +744,13 @@ public class ABSTeam {
     }
 
     public void addClaim(String claim) {
+        BasicTeamWars.getInstance().log(LogLevel.PLAYER_INFO, teamUUID.toString() + " team has been added new claim, Claim UUID: " + claim);
         this.claims.add(claim);
 
     }
 
     public void removeClaim(String claim) {
+        BasicTeamWars.getInstance().log(LogLevel.PLAYER_INFO, teamUUID.toString() + " team has been removed claim, Claim UUID: " + claim);
         this.claims.remove(claim);
 
     }
@@ -835,6 +848,7 @@ public class ABSTeam {
         if (this.teamDataFile.exists()) {
             this.teamDataFile.delete();
         }
+        BasicTeamWars.getInstance().log(LogLevel.PLAYER_INFO, teamUUID.toString() + " has uuid with team has been removed!");
     }
 
     /**

@@ -2,6 +2,7 @@ package com.speedyg.btw.menu;
 
 import com.google.common.collect.Lists;
 import com.speedyg.btw.BasicTeamWars;
+import com.speedyg.btw.LogLevel;
 import com.speedyg.btw.menu.absclass.Menu;
 import com.speedyg.btw.menu.general.LogoMakerMenu;
 import com.speedyg.btw.messages.Messages;
@@ -127,6 +128,7 @@ public class TeamMakeMenu extends Menu implements Listener {
                                             TeamPlayer player = TeamPlayer.getPlayer(p);
                                             player.setTeam(team);
                                             player.savePlayer();
+                                            main.log(LogLevel.PLAYER_INFO, p.getName() + " is created new team, UUID: " + team.getTeamUUID().toString());
                                             p.sendMessage(Messages.team_make_success);
                                         } else {
                                             p.sendMessage(Messages.not_enough_money_player);

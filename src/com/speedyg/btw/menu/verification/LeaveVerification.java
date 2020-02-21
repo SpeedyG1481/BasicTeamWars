@@ -1,12 +1,12 @@
 package com.speedyg.btw.menu.verification;
 
 import com.speedyg.btw.BasicTeamWars;
+import com.speedyg.btw.LogLevel;
 import com.speedyg.btw.menu.absclass.Menu;
 import com.speedyg.btw.menu.absclass.VerificationMenu;
 import com.speedyg.btw.messages.Messages;
 import com.speedyg.btw.systems.Skull;
 import com.speedyg.btw.team.ABSTeam;
-import com.speedyg.btw.team.player.TeamPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -87,6 +87,7 @@ public class LeaveVerification extends VerificationMenu implements Listener {
                                 ABSTeam team = ABSTeam.getTeamByTeamUUID(this.team);
                                 team.removeMember(p.getUniqueId());
                                 team.saveTeam();
+                                main.log(LogLevel.PLAYER_INFO, p.getName() + " is leaved own team! Team UUID: " + team.getTeamUUID().toString());
                                 p.closeInventory();
                                 p.sendMessage(Messages.leave_team_success);
                             }

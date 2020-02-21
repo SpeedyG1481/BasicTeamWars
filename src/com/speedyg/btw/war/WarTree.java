@@ -1,6 +1,7 @@
 package com.speedyg.btw.war;
 
 import com.speedyg.btw.BasicTeamWars;
+import com.speedyg.btw.LogLevel;
 import com.speedyg.btw.filesystem.System;
 import com.speedyg.btw.messages.Messages;
 import com.speedyg.btw.team.ABSTeam;
@@ -19,7 +20,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitScheduler;
 
 import java.util.*;
-import java.util.logging.Level;
 
 public class WarTree implements Listener {
 
@@ -113,7 +113,7 @@ public class WarTree implements Listener {
         if (war.getTeam1_Loc() == null || war.getTeam2_Loc() == null) {
             team1.addMessage(Messages.team_war_error);
             team2.addMessage(Messages.team_war_error);
-            BasicTeamWars.getInstance().log(Level.SEVERE, "Team war arena spawn location null! War is abandoned!");
+            BasicTeamWars.getInstance().log(LogLevel.ERROR, "Team war arena spawn location null! War is abandoned!");
             return false;
         }
         List<String> removablePlayer = new ArrayList<>();

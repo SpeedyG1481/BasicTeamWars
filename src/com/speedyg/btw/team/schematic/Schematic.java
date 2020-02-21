@@ -1,11 +1,10 @@
 package com.speedyg.btw.team.schematic;
 
 import com.speedyg.btw.BasicTeamWars;
+import com.speedyg.btw.Version;
 import com.speedyg.btw.messages.Messages;
 import com.speedyg.btw.team.claim.Claim;
 import org.bukkit.Bukkit;
-import org.bukkit.Effect;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -17,8 +16,6 @@ import org.json.simple.parser.ParseException;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * This class created for Basic Team Wars plugin.
@@ -42,6 +39,8 @@ public class Schematic {
     private long cost;
     private int minLevel;
 
+    private Version schemaVersion;
+
     public Schematic(String schematicName) {
         File schemaFile = new File(BasicTeamWars.getInstance().getDataFolder() + "/schematics", schematicName + ".obs");
         try {
@@ -57,6 +56,10 @@ public class Schematic {
             this.name = (String) jo.get("SchemaName");
             this.cost = (long) jo.get("Cost");
             this.minLevel = (int) (long) jo.get("Min-Level");
+            if (jo.get("Version") != null)
+                this.schemaVersion = Version.valueOf((String) jo.get("Version"));
+            else
+                this.schemaVersion = Version.UNSUPPORTED;
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -76,6 +79,10 @@ public class Schematic {
             this.name = (String) jo.get("SchemaName");
             this.cost = (long) jo.get("Cost");
             this.minLevel = (int) (long) jo.get("Min-Level");
+            if (jo.get("Version") != null)
+                this.schemaVersion = Version.valueOf((String) jo.get("Version"));
+            else
+                this.schemaVersion = Version.UNSUPPORTED;
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -95,9 +102,13 @@ public class Schematic {
         return xSize <= (claim.getMaxX() - claim.getMinX()) && zSize <= (claim.getMaxZ() - claim.getMinZ());
     }
 
+    public boolean isSuitSchemaVersion() {
+        return BasicTeamWars.getInstance().getServerVersion().equals(this.schemaVersion);
+    }
+
     @Deprecated
     public void buildSchematicToClaim(Player p, Claim claim, int rotateValue) {
-        if (this.isSuitClaim(claim)) {
+        if (this.isSuitClaim(claim) && isSuitSchemaVersion()) {
             int startY = claim.getAverageY();
             int startX = claim.getMinX();
             int startZ = claim.getMinZ();

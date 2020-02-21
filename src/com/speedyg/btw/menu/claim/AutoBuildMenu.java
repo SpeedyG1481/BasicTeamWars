@@ -1,6 +1,7 @@
 package com.speedyg.btw.menu.claim;
 
 import com.speedyg.btw.BasicTeamWars;
+import com.speedyg.btw.filesystem.System;
 import com.speedyg.btw.menu.absclass.PageMenu;
 import com.speedyg.btw.messages.Messages;
 import com.speedyg.btw.systems.Skull;
@@ -18,7 +19,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 public class AutoBuildMenu extends PageMenu implements Listener {
 
@@ -33,14 +37,16 @@ public class AutoBuildMenu extends PageMenu implements Listener {
         this.team = team;
         this.claim = claim;
         this.schematicList = new ArrayList<>();
-        File listFiles = new File(BasicTeamWars.getInstance().getDataFolder() + "/schematics");
-        if (listFiles.isDirectory()) {
-            for (File f : Objects.requireNonNull(listFiles.listFiles())) {
-                this.schematicList.add(new Schematic(f));
-            }
+        for (File f : System.getAllSchematics()) {
+            Schematic schematic = new Schematic(f);
+            if (schematic.isSuitSchemaVersion())
+                this.schematicList.add(schematic);
         }
+
         this.totalMenu = (schematicList.size() / 45) + 1;
-        for (int i = 0; i < totalMenu; i++) {
+        for (
+                int i = 0;
+                i < totalMenu; i++) {
             this.inv.put(i, Bukkit.createInventory(null, 54,
                     main.getMenuOptions().getString("AutoBuildMenu.Menu_Name") != null
                             ? main.getMenuOptions().getString("AutoBuildMenu.Menu_Name")
@@ -48,7 +54,12 @@ public class AutoBuildMenu extends PageMenu implements Listener {
                             : "§8Schematics : Page §e" + (i + 1)));
         }
         this.currentMenu = 0;
-        Bukkit.getServer().getPluginManager().registerEvents(this, main);
+        Bukkit.getServer().
+
+                getPluginManager().
+
+                registerEvents(this, main);
+
     }
 
 

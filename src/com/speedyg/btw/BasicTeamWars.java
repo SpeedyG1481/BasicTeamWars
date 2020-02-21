@@ -2,6 +2,8 @@ package com.speedyg.btw;
 
 import com.speedyg.btw.commands.Basic_Team_Wars_Command;
 import com.speedyg.btw.events.Events;
+import com.speedyg.btw.filesystem.System;
+import com.speedyg.btw.license.License;
 import com.speedyg.btw.messages.Messages;
 import com.speedyg.btw.placeholder.MVdWPlaceHolderAPI;
 import com.speedyg.btw.placeholder.PlaceHolderAPI;
@@ -14,12 +16,12 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+import java.net.InetAddress;
+import java.util.Date;
 
 public class BasicTeamWars extends JavaPlugin {
 
@@ -33,6 +35,7 @@ public class BasicTeamWars extends JavaPlugin {
     private FileConfiguration spawnFileOptions;
     private SignMenuFactory menuFactory;
     private Timer timer;
+    private File logFile;
 
     public BasicTeamWars() {
         instance = this;
@@ -44,27 +47,95 @@ public class BasicTeamWars extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        if (!setupEconomy()) {
-            Bukkit.getConsoleSender().sendMessage("§cDepended plugins not found!");
-            Bukkit.getConsoleSender().sendMessage("§cPlugin was disabled!");
-            Bukkit.getConsoleSender().sendMessage("§cDepended Plugins: §6" + this.getDescription().getDepend().toString());
+        Date date = new Date();
+        String version = Bukkit.getServer().getClass().getPackage().getName().substring(23);
+        this.logFile = new File(this.getDataFolder() + "/logs", date.toString()
+                .replaceAll(":", " ") + ".txt");
+
+        if (!this.checkLicense()) {
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §6§lWarning! §cNot found licence! Please buy this plugin!");
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §cIf you have licence but you receive this error,");
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §cyou can send a message to this address. §eDiscord: Yusuf#7761");
+            this.log(LogLevel.ERROR, "Warning! Not found licence! Please buy this plugin!");
+            this.log(LogLevel.ERROR, "If you have licence but you receive this error," +
+                    " you can send a message to this address. Discord: Yusuf#7761");
             Bukkit.getServer().getPluginManager().disablePlugin(this);
             return;
+        } else {
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §aLicense found!");
+            this.log(LogLevel.INFO, "License activated!");
         }
+
+        if (this.getServerVersion().equals(Version.UNSUPPORTED)) {
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §cUnsupported version detected! §bYour Version: §e" + version);
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §6We have support, §e1.9.x, 1.10.x, 1.11.x, 1.12.x, 1.14.x, 1.15.x");
+            Bukkit.getServer().getPluginManager().disablePlugin(this);
+            this.log(LogLevel.ERROR, "Plugin disabled...");
+            this.log(LogLevel.ERROR, "Unsupported version detected!");
+            return;
+        } else {
+            this.log(LogLevel.INFO, "Plugin enabling...");
+
+        }
+
+        if (!setupEconomy()) {
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §cDepended plugins not found!");
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §cPlugin was disabled!");
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §cDepended Plugins: §6" + this.getDescription().getDepend().toString());
+            Bukkit.getServer().getPluginManager().disablePlugin(this);
+            this.log(LogLevel.ERROR, "Plugin disabled...");
+            this.log(LogLevel.ERROR, "Depended plugins not found..!");
+            this.log(LogLevel.ERROR, "Depended Plugins: " + this.getDescription().getDepend().toString());
+            return;
+        }
+
         this.getCommand("basicteamwars").setExecutor(new Basic_Team_Wars_Command(this));
         this.loadYMLFiles();
-        this.menuFactory = new SignMenuFactory(this);
         new Events(this);
         this.loadDefaultSchematics();
         if (this.getConfig().getBoolean("Weekly_War_Active"))
             this.timer = new Timer();
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new PlaceHolderAPI().register();
+            this.log(LogLevel.INFO, "PlaceholderAPI founded! Placeholders registered!");
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §aPlaceholderAPI founded! Placeholders registered.");
         }
 
         if (Bukkit.getPluginManager().getPlugin("MVdWPlaceholderAPI") != null) {
             MVdWPlaceHolderAPI api = new MVdWPlaceHolderAPI();
             api.registerPlaceHolders();
+            this.log(LogLevel.INFO, "MVdWPlaceHolderAPI founded! Placeholders registered!");
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §aMVdWPlaceHolderAPI founded! Placeholders registered.");
+        }
+        this.menuFactory = new SignMenuFactory(this);
+        {
+            int teamSize = System.getAllTeams().size();
+            int claimSize = System.getAllClaims().size();
+            int kitSize = System.getAllKits().size();
+            int schematicSize = System.getAllSchematics().size();
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §aPlugin successfully enabled!");
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §b" + teamSize + "§7 teams loaded!");
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §b" + claimSize + "§7 claims loaded!");
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §b" + kitSize + "§7 kits loaded!");
+            Bukkit.getConsoleSender().sendMessage("§e[§bBTW§e] §b" + schematicSize + "§7 schematics loaded!");
+
+            this.log(LogLevel.INFO, "Plugin successfully enabled.");
+            this.log(LogLevel.INFO, "Server version: " + this.getServerVersion().toString().toUpperCase());
+            this.log(LogLevel.INFO, teamSize + " teams loaded!");
+            this.log(LogLevel.INFO, claimSize + " claims loaded!");
+            this.log(LogLevel.INFO, kitSize + " kits loaded!");
+            this.log(LogLevel.INFO, schematicSize + " schematics loaded!");
+        }
+    }
+
+
+    private boolean checkLicense() {
+        License license;
+        try {
+            license = new License(InetAddress.getLocalHost().getHostAddress(), this.getDescription().getName());
+            return license.getControl();
+        } catch (IOException e) {
+            return false;
         }
     }
 
@@ -82,18 +153,20 @@ public class BasicTeamWars extends JavaPlugin {
         }
     }
 
-    public void log(Level level, String log) {
-        Logger logger = Logger.getLogger("Logger");
-        FileHandler fh;
-
+    public void log(LogLevel level, String log) {
+        Date date = new Date();
         try {
-            fh = new FileHandler(this.getDataFolder() + "/log/log.txt");
-            logger.addHandler(fh);
-            SimpleFormatter formatter = new SimpleFormatter();
-            fh.setFormatter(formatter);
-            logger.log(level, log);
+            if (!logFile.exists()) {
+                logFile.getParentFile().mkdirs();
+                logFile.createNewFile();
+            }
 
-        } catch (SecurityException | IOException e) {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(this.logFile, true));
+            writer.newLine();
+            writer.write("[" + date.toString() + "/" + level.toString().toUpperCase() + "] " + log);
+            writer.close();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -202,5 +275,25 @@ public class BasicTeamWars extends JavaPlugin {
 
     public Timer getTimer() {
         return timer;
+    }
+
+    public Version getServerVersion() {
+        String version = Bukkit.getServer().getClass().getPackage().getName().substring(23);
+        if (version.contains("1_9"))
+            return Version.V1_9;
+        else if (version.contains("1_10"))
+            return Version.V1_10;
+        else if (version.contains("1_11"))
+            return Version.V1_11;
+        else if (version.contains("1_12"))
+            return Version.V1_12;
+        else if (version.contains("1_14"))
+            return Version.V1_14;
+        else if (version.contains("1_15"))
+            return Version.V1_15;
+        else if (version.contains("1_16"))
+            return Version.V1_16;
+        else
+            return Version.UNSUPPORTED;
     }
 }

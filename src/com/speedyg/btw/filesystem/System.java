@@ -70,7 +70,7 @@ public class System {
         File file = new File(BasicTeamWars.getInstance().getDataFolder() + "/claims");
         if (file.isDirectory())
             if (file.listFiles() != null)
-                for (File claimFile : file.listFiles()) {
+                for (File claimFile : Objects.requireNonNull(file.listFiles())) {
                     returnList.add(Claim.getClaim(claimFile).getClaimUUID().toString());
                 }
         return returnList;
@@ -81,9 +81,18 @@ public class System {
         File file = new File(BasicTeamWars.getInstance().getDataFolder() + "/kits");
         if (file.isDirectory())
             if (file.listFiles() != null)
-                for (File kitFile : file.listFiles()) {
+                for (File kitFile : Objects.requireNonNull(file.listFiles())) {
                     returnList.add(TeamKit.getTeamKit(kitFile).getUUID().toString());
                 }
+        return returnList;
+    }
+
+    public static List<File> getAllSchematics() {
+        List<File> returnList = new ArrayList<>();
+        File file = new File(BasicTeamWars.getInstance().getDataFolder() + "/schematics");
+        if (file.isDirectory())
+            if (file.listFiles() != null)
+                returnList.addAll(Arrays.asList(Objects.requireNonNull(file.listFiles())));
         return returnList;
     }
 
@@ -322,6 +331,7 @@ public class System {
             return second + " " + secS;
         }
     }
+
 }
 
 

@@ -111,20 +111,21 @@ public class BalanceControlMenu extends Menu implements Listener {
                                 if (team.hasPermission(p, Permission.ADD_FUND_TEAM)) {
                                     BasicTeamWars.getInstance().getMenuFactory()
                                             .newMenu(p,
-                                                    Lists.newArrayList("", Messages.add_fund_message_1, Messages.add_fund_message_2,
-                                                            Messages.add_fund_message_3))
+                                                    Lists.newArrayList("", "", "",
+                                                            ""))
                                             .reopenIfFail().response((player, strings) -> {
-
                                         if (strings[0] != null) {
                                             if (strings[0].length() > 0) {
                                                 if (main.isInt(strings[0])) {
                                                     int requestedValue = Integer.parseInt(strings[0]);
                                                     if (requestedValue > 0) {
                                                         if (BasicTeamWars.getEconomy().getBalance(p) >= requestedValue) {
-                                                            team.addBalance(requestedValue);
-                                                            team.saveTeam();
-                                                            BasicTeamWars.getEconomy().withdrawPlayer(p, requestedValue);
-                                                            p.sendMessage(Messages.add_fund_success);
+                                                            Bukkit.getScheduler().runTask(BasicTeamWars.getInstance(), () -> {
+                                                                p.sendMessage(Messages.add_fund_success);
+                                                                team.addBalance(requestedValue);
+                                                                team.saveTeam();
+                                                                BasicTeamWars.getEconomy().withdrawPlayer(p, requestedValue);
+                                                            });
                                                             this.openMenu();
                                                         } else {
                                                             p.closeInventory();
@@ -149,8 +150,8 @@ public class BalanceControlMenu extends Menu implements Listener {
                                 if (team.hasPermission(p, Permission.WITHDRAW_FUND_TEAM)) {
                                     BasicTeamWars.getInstance().getMenuFactory()
                                             .newMenu(p,
-                                                    Lists.newArrayList("", Messages.add_fund_message_1, Messages.add_fund_message_2,
-                                                            Messages.add_fund_message_3))
+                                                    Lists.newArrayList("", "", "",
+                                                            ""))
                                             .reopenIfFail().response((player, strings) -> {
 
                                         if (strings[0] != null) {
@@ -159,10 +160,12 @@ public class BalanceControlMenu extends Menu implements Listener {
                                                     int requestedValue = Integer.parseInt(strings[0]);
                                                     if (requestedValue > 0) {
                                                         if (team.getBalance() >= requestedValue) {
-                                                            team.removeBalance(requestedValue);
-                                                            team.saveTeam();
-                                                            BasicTeamWars.getEconomy().depositPlayer(p, requestedValue);
-                                                            p.sendMessage(Messages.withdraw_success);
+                                                            Bukkit.getScheduler().runTask(BasicTeamWars.getInstance(), () -> {
+                                                                p.sendMessage(Messages.withdraw_success);
+                                                                BasicTeamWars.getEconomy().depositPlayer(p, requestedValue);
+                                                                team.removeBalance(requestedValue);
+                                                                team.saveTeam();
+                                                            });
                                                             this.openMenu();
                                                         } else {
                                                             p.sendMessage(Messages.not_enough_money);
