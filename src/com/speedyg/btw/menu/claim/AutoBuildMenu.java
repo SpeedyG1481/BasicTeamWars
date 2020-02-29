@@ -143,21 +143,18 @@ public class AutoBuildMenu extends PageMenu implements Listener {
                                                     schematic.buildSchematicToClaim(p, claim, rotateValue = rand[r.nextInt(rand.length)]);
                                                     p.sendMessage(Messages.build_started);
                                                 } else {
-                                                    p.closeInventory();
                                                     p.sendMessage(Messages.claim_is_not_suitable_of_schematic);
                                                 }
                                             } else {
                                                 p.sendMessage(Messages.team_level_not_enough);
-                                                p.closeInventory();
                                             }
                                         } else {
-                                            p.closeInventory();
                                             p.sendMessage(Messages.not_enough_money);
                                         }
                                     } else {
-                                        p.closeInventory();
                                         p.sendMessage(Messages.insufficient_permissions);
                                     }
+                                    p.closeInventory();
                                 }
                             }
                         }

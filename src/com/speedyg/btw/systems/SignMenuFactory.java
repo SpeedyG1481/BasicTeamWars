@@ -13,6 +13,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -116,13 +117,20 @@ public final class SignMenuFactory {
             Location location = this.player.getLocation();
             BlockPosition blockPosition = new BlockPosition(location.getBlockX(), location.getBlockY() - 5,
                     location.getBlockZ());
+
             Material sign;
             if (BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_14) || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_15) || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_16)) {
-                sign = Material.BIRCH_WALL_SIGN;
+                sign = Material.JUNGLE_WALL_SIGN;
+                Block b = blockPosition.toLocation(location.getWorld()).getBlock();
+                b.setType(sign);
+                b.getState().setType(sign);
+                b.getState().update();
+                player.sendBlockChange(blockPosition.toLocation(location.getWorld()), b.getBlockData());
             } else {
                 sign = Material.getMaterial("WALL_SIGN");
+                player.sendBlockChange(blockPosition.toLocation(location.getWorld()), sign, (byte) 0);
             }
-            player.sendBlockChange(blockPosition.toLocation(location.getWorld()), sign, (byte) 0);
+
 
             PacketContainer openSign = ProtocolLibrary.getProtocolManager()
                     .createPacket(PacketType.Play.Server.OPEN_SIGN_EDITOR);

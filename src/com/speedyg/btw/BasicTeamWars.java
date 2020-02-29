@@ -75,7 +75,6 @@ public class BasicTeamWars extends JavaPlugin {
             return;
         } else {
             this.log(LogLevel.INFO, "Plugin enabling...");
-
         }
 
         if (!setupEconomy()) {

@@ -1,12 +1,14 @@
 package com.speedyg.btw.team.claim;
 
 import com.speedyg.btw.BasicTeamWars;
+import com.speedyg.btw.Version;
 import com.speedyg.btw.filesystem.System;
 import com.speedyg.btw.team.ABSTeam;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -16,6 +18,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.UUID;
 
 /**
@@ -162,7 +165,7 @@ public class Claim {
     public void showNewClaim() {
         int maxX = this.getMaxX();
         int maxZ = this.getMaxZ();
-
+        int averageY = getAverageY();
         int minX = this.getMinX();
         int minZ = this.getMinZ();
         try {
@@ -193,10 +196,21 @@ public class Claim {
                             + claimOwner.getTeamLogo().getLogo().length))) {
                         color = claimOwner.getTeamLogo().getLogo()[y][counterX_Z % (((this.claimOwner.getMaxClaimSize() * 2) - claimOwner.getTeamLogo().getLogo().length) / 2)];
                     }
-                    Block b = this.center.getWorld().getBlockAt(x, this.center.getWorld().getHighestBlockYAt(x, z) + exY, z);
-                    b.setType(Material.getMaterial("STAINED_GLASS_PANE"));
-                    b.getState().setRawData((byte) color);
-
+                    Block b;
+                    Material mat;
+                    if (BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_14)
+                            || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_15)
+                            || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_16)) {
+                        b = this.center.getWorld().getBlockAt(x, averageY + exY, z);
+                        mat = glassChanger(color).getType();
+                        b.setType(mat);
+                    } else {
+                        b = this.center.getWorld().getBlockAt(x, this.center.getWorld().getHighestBlockYAt(x, z) + exY, z);
+                        mat = Material.getMaterial("STAINED_GLASS_PANE");
+                        b.setType(mat);
+                        b.getState().setRawData((byte) color);
+                    }
+                    b.getState().update();
                     exY++;
                 }
                 counterX_Z++;
@@ -220,7 +234,7 @@ public class Claim {
     private void clearEffect(Location loc1, Location loc2) {
         int maxX = Math.max(loc1.getBlockX(), loc2.getBlockX());
         int maxZ = Math.max(loc1.getBlockZ(), loc2.getBlockZ());
-
+        int averageY = getAverageY();
         int minX = Math.min(loc1.getBlockX(), loc2.getBlockX());
         int minZ = Math.min(loc1.getBlockZ(), loc2.getBlockZ());
 
@@ -241,22 +255,78 @@ public class Claim {
                 }
                 int exY = 0;
                 for (int y = 9; y >= 0; y--) {
-                    Block b = this.center.getWorld().getBlockAt(x, this.center.getWorld().getHighestBlockYAt(x, z) + exY, z);
-                    if (b.getType().equals(Material.getMaterial("STAINED_GLASS_PANE")))
-                        b.setType(Material.getMaterial("AIR"));
+                    Block b;
+                    if (BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_14)
+                            || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_15)
+                            || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_16))
+                        b = this.center.getWorld().getBlockAt(x, averageY + exY, z);
+                    else
+                        b = this.center.getWorld().getBlockAt(x, this.center.getWorld().getHighestBlockYAt(x, z) + exY, z);
+                    if (b != null)
+                        if (b.getType() != null)
+                            if (b.getType().name().contains("STAINED_GLASS_PANE"))
+                                b.setType(Material.getMaterial("AIR"));
                     exY++;
                 }
                 time++;
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
+    }
+
+
+    private ItemStack glassChanger(short data) {
+        ItemStack item;
+        switch (data) {
+            case 1:
+                item = new ItemStack(Material.ORANGE_STAINED_GLASS_PANE);
+                break;
+            case 3:
+                item = new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE);
+                break;
+            case 4:
+                item = new ItemStack(Material.YELLOW_STAINED_GLASS_PANE);
+                break;
+            case 5:
+                item = new ItemStack(Material.LIME_STAINED_GLASS_PANE);
+                break;
+            case 6:
+                item = new ItemStack(Material.PINK_STAINED_GLASS_PANE);
+                break;
+            case 7:
+                item = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+                break;
+            case 8:
+                item = new ItemStack(Material.LIGHT_GRAY_STAINED_GLASS_PANE);
+                break;
+            case 9:
+                item = new ItemStack(Material.CYAN_STAINED_GLASS_PANE);
+                break;
+            case 10:
+                item = new ItemStack(Material.PURPLE_STAINED_GLASS_PANE);
+                break;
+            case 11:
+                item = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
+                break;
+            case 13:
+                item = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
+                break;
+            case 14:
+                item = new ItemStack(Material.RED_STAINED_GLASS_PANE);
+                break;
+            default:
+                item = new ItemStack(Material.WHITE_STAINED_GLASS_PANE);
+                break;
+        }
+
+        return item;
     }
 
     @Deprecated
     private void borderEffect(Location loc1, Location loc2) {
         int maxX = Math.max(loc1.getBlockX(), loc2.getBlockX());
         int maxZ = Math.max(loc1.getBlockZ(), loc2.getBlockZ());
-
+        int averageY = getAverageY();
         int minX = Math.min(loc1.getBlockX(), loc2.getBlockX());
         int minZ = Math.min(loc1.getBlockZ(), loc2.getBlockZ());
 
@@ -288,10 +358,25 @@ public class Claim {
                             + claimOwner.getTeamLogo().getLogo().length))) {
                         color = claimOwner.getTeamLogo().getLogo()[y][counterX_Z % (((this.claimOwner.getMaxClaimSize() * 2) - claimOwner.getTeamLogo().getLogo().length) / 2)];
                     }
-                    Block b = this.center.getWorld().getBlockAt(x, this.center.getWorld().getHighestBlockYAt(x, z) + exY, z);
+                    Block b;
+                    if (BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_14)
+                            || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_15)
+                            || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_16))
+                        b = this.center.getWorld().getBlockAt(x, averageY + exY, z);
+                    else
+                        b = this.center.getWorld().getBlockAt(x, this.center.getWorld().getHighestBlockYAt(x, z) + exY, z);
                     if (b.getType().equals(Material.getMaterial("AIR"))) {
-                        b.setType(Material.getMaterial("STAINED_GLASS_PANE"));
-                        b.getState().setRawData((byte) color);
+                        Material mat;
+                        if (BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_14) || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_15) || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_16)) {
+                            mat = glassChanger(color).getType();
+                            b.setType(mat);
+                        } else {
+                            mat = Material.getMaterial("STAINED_GLASS_PANE");
+                            b.setType(mat);
+                            b.getState().setRawData((byte) color);
+                        }
+
+
                     }
 
                     exY++;

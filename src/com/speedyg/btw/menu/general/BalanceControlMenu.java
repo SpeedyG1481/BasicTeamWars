@@ -128,7 +128,6 @@ public class BalanceControlMenu extends Menu implements Listener {
                                                             });
                                                             this.openMenu();
                                                         } else {
-                                                            p.closeInventory();
                                                             p.sendMessage(Messages.not_enough_money_player);
                                                         }
                                                     } else {

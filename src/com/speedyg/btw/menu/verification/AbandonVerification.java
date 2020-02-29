@@ -86,12 +86,18 @@ public class AbandonVerification extends VerificationMenu implements Listener {
                                 returnMenu.openMenu();
                             } else if (e.getCurrentItem().getItemMeta().getDisplayName().equals(this.accept().getItemMeta().getDisplayName())) {
                                 ABSTeam team = ABSTeam.getTeamByTeamUUID(this.team);
-                                if (!main.getTimer().getWar().getTeamList().contains(team.getTeamUUID())) {
+                                if (main.getTimer() != null) {
+                                    if (!main.getTimer().getWar().getTeamList().contains(team.getTeamUUID())) {
+                                        team.removeTeam();
+                                        main.log(LogLevel.INFO, "Team has been removed!.. Removed Team UUID: " + team.getTeamUUID().toString());
+                                        p.sendMessage(Messages.team_deleted);
+                                    } else {
+                                        p.sendMessage(Messages.team_remove_abandoned);
+                                    }
+                                } else {
                                     team.removeTeam();
                                     main.log(LogLevel.INFO, "Team has been removed!.. Removed Team UUID: " + team.getTeamUUID().toString());
                                     p.sendMessage(Messages.team_deleted);
-                                } else {
-                                    p.sendMessage(Messages.team_remove_abandoned);
                                 }
                                 p.closeInventory();
                             }

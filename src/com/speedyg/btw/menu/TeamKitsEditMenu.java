@@ -1,6 +1,7 @@
 package com.speedyg.btw.menu;
 
 import com.speedyg.btw.BasicTeamWars;
+import com.speedyg.btw.Version;
 import com.speedyg.btw.menu.absclass.Menu;
 import com.speedyg.btw.messages.Messages;
 import com.speedyg.btw.systems.Skull;
@@ -42,7 +43,13 @@ public class TeamKitsEditMenu extends Menu implements Listener {
     }
 
     private ItemStack glass() {
-        ItemStack item = new ItemStack(Material.getMaterial("STAINED_GLASS_PANE"), 1, (short) 15);
+        Material mat;
+        if (BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_14) || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_15) || BasicTeamWars.getInstance().getServerVersion().equals(Version.V1_16)) {
+            mat = Material.getMaterial("STAINED_GLASS_PANE", true);
+        } else {
+            mat = Material.getMaterial("STAINED_GLASS_PANE");
+        }
+        ItemStack item = new ItemStack(mat, 1, (short) 15);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setDisplayName(" ");
         item.setItemMeta(itemMeta);
